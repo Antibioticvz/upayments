@@ -1,26 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+import 'assets/main.css'
+import 'assets/tailwind.css'
+
+const App: FC = () => (
+  <div className="max-w-sm rounded overflow-hidden shadow-lg">
+    <div className="px-6 py-4">
+      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mt-2 ml-20">
+        UPayments
+      </span>
     </div>
-  );
-}
+  </div>
+)
 
-export default App;
+export default App
