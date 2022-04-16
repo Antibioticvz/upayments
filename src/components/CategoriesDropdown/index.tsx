@@ -1,3 +1,3 @@
 import { FC } from 'react'
 
-export const Header: FC = () => <div>Header</div>
+export const CategoriesDropdown: FC = () => <div>CategoriesDropdown</div>
