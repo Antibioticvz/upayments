@@ -7,7 +7,7 @@ export const Home: FC = () => {
   const items = FetchProducts()
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto w-3/4">
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         {items?.map((item: IProduct) => (
           <Fragment key={item.id}>
