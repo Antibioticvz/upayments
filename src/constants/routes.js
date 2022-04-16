@@ -3,3 +3,7 @@ export const ROUTES = {
   CREATE: '/create',
   PRODUCT: '/product/:id',
 }
+
+export const ROUTES_HREF = {
+  PRODUCT: '/product',
+}
