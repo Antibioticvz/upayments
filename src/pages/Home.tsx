@@ -1,30 +1,81 @@
-import { FC, Fragment } from 'react'
+import { FC, Fragment, useState } from 'react'
 
 import { FetchProducts, IProduct } from 'requests'
 import { ProductGridItem } from 'components/ProductGridItem'
 import { AddButton } from 'components/AddButton'
+import { CategoriesDropdown } from 'components/CategoriesDropdown'
+import FetchCategories from 'requests/FetchCategories'
 
 export const Home: FC = () => {
   const items = FetchProducts()
+  const categories = FetchCategories()
+
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
+
+  const isSelected = (value: string) => selectedCategories.includes(value)
+
+  const handleDeselect = (value: string) => {
+    const selectedPersonsUpdated = selectedCategories.filter(el => el !== value)
+    setSelectedCategories(selectedPersonsUpdated)
+  }
+
+  const handleSelect = (value: string) => {
+    if (isSelected(value)) handleDeselect(value)
+    else setSelectedCategories([...selectedCategories, value])
+  }
 
   return (
     <>
+      <CategoriesDropdown
+        options={categories}
+        selectedCategories={selectedCategories}
+        handleSelect={handleSelect}
+      />
+
       <div className="container mx-auto w-3/4" style={{ minHeight: 2000 }}>
         <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-          {items?.map((item: IProduct) => (
-            <Fragment key={item.id}>
-              <ProductGridItem
-                avatar={item?.avatar}
-                category={item?.category}
-                createdAt={item?.createdAt}
-                description={item?.description}
-                developerEmail={item?.developerEmail}
-                id={item?.id}
-                name={item?.name}
-                price={item?.price}
-              />
-            </Fragment>
-          ))}
+          {items?.map(
+            ({
+              id,
+              avatar,
+              category,
+              createdAt,
+              description,
+              developerEmail,
+              name,
+              price,
+            }: IProduct) =>
+              selectedCategories.length === 0 ? (
+                <Fragment key={id}>
+                  <ProductGridItem
+                    avatar={avatar}
+                    category={category}
+                    createdAt={createdAt}
+                    description={description}
+                    developerEmail={developerEmail}
+                    id={id}
+                    name={name}
+                    price={price}
+                  />
+                </Fragment>
+              ) : (
+                selectedCategories.length > 0 &&
+                selectedCategories.includes(category) && (
+                  <Fragment key={id}>
+                    <ProductGridItem
+                      avatar={avatar}
+                      category={category}
+                      createdAt={createdAt}
+                      description={description}
+                      developerEmail={developerEmail}
+                      id={id}
+                      name={name}
+                      price={price}
+                    />
+                  </Fragment>
+                )
+              ),
+          )}
         </div>
       </div>
 
