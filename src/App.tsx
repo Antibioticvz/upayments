@@ -17,7 +17,7 @@ const App: FC = () => {
   console.log('')
 
   return (
-    <div className="">
+    <div>
       <Header />
 
       <Routes>
@@ -27,9 +27,7 @@ const App: FC = () => {
             <Suspense
               fallback={
                 <div>
-                  {' '}
                   <img
-                    className="center"
                     src="https://c.tenor.com/28DFFVtvNqYAAAAC/loading.gif"
                     alt="...Loading"
                   />

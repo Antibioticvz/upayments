@@ -1,15 +1,29 @@
-import { FC } from 'react'
+import { FC, Fragment } from 'react'
 
 import { FetchProducts, IProduct } from 'requests'
+import { ProductGridItem } from 'components/ProductGridItem'
 
 export const Home: FC = () => {
   const items = FetchProducts()
 
   return (
-    <div>
-      {items?.map((item: IProduct) => (
-        <p key={item.id}>{item.name}</p>
-      ))}
+    <div className="container mx-auto">
+      <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        {items?.map((item: IProduct) => (
+          <Fragment key={item.id}>
+            <ProductGridItem
+              avatar={item?.avatar}
+              category={item?.category}
+              createdAt={item?.createdAt}
+              description={item?.description}
+              developerEmail={item?.developerEmail}
+              id={item?.id}
+              name={item?.name}
+              price={item?.price}
+            />
+          </Fragment>
+        ))}
+      </div>
     </div>
   )
 }
