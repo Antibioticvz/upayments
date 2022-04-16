@@ -102,14 +102,36 @@ Prevent `sub` and `sup` elements from affecting the line height in all browsers.
 3. Remove default padding in all browsers.
 */
 
+button,
+select {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: inherit; /* 1 */
+  color: inherit; /* 1 */
+  margin: 0; /* 2 */
+  padding: 0; /* 3 */
+}
+
 /*
 Remove the inheritance of text transform in Edge and Firefox.
 */
+
+button,
+select {
+  text-transform: none;
+}
 
 /*
 1. Correct the inability to style clickable types in iOS and Safari.
 2. Remove default button styles.
 */
+
+button,
+[type='button'] {
+  -webkit-appearance: button; /* 1 */
+  background-color: transparent; /* 2 */
+  background-image: none; /* 2 */
+}
 
 /*
 Use the modern Firefox focus style for all focusable elements.
@@ -169,6 +191,14 @@ p {
   margin: 0;
 }
 
+
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 /*
 Prevent resizing textareas horizontally by default.
 */
@@ -182,6 +212,11 @@ Prevent resizing textareas horizontally by default.
 Set the default cursor for buttons.
 */
 
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
 /*
 Make sure disabled buttons don't get the pointer cursor.
 */
@@ -192,7 +227,8 @@ Make sure disabled buttons don't get the pointer cursor.
    This can trigger a poorly considered lint error in some tools but is included by design.
 */
 
-img {
+img,
+svg {
   display: block; /* 1 */
   vertical-align: middle; /* 2 */
 }
@@ -209,6 +245,10 @@ img {
 /*
 Ensure the default browser behavior of the `hidden` attribute.
 */
+
+[hidden] {
+  display: none;
+}
 
 *, ::before, ::after {
   --tw-translate-x: 0;
