@@ -5,7 +5,7 @@ import { suspend } from './suspend'
 export interface IProduct {
   avatar: string
   category: string
-  createdAt: number
+  createdAt: number | string
   description: string
   developerEmail: string
   id: string

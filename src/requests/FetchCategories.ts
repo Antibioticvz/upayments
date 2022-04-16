@@ -3,7 +3,7 @@ import { API } from 'constants/apiCall'
 import { suspend } from './suspend'
 
 export interface ICategories {
-  createdAt: number
+  createdAt: number | string
   id: string
   name: string
 }
