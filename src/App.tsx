@@ -13,37 +13,34 @@ const HomeLazyPage = lazy(() =>
     return { default: Home }
   }),
 )
-const App: FC = () => {
-  console.log('')
+const App: FC = () => (
+  <div>
+    <Header />
 
-  return (
-    <div>
-      <Header />
-
-      <Routes>
-        <Route
-          path={ROUTES.HOME}
-          element={
-            <Suspense
-              fallback={
-                <div>
-                  <img
-                    src="https://c.tenor.com/28DFFVtvNqYAAAAC/loading.gif"
-                    alt="...Loading"
-                  />
-                </div>
-              }
-            >
-              <HomeLazyPage />
-            </Suspense>
-          }
-        />
-        <Route path={ROUTES.CREATE} element={<Create />} />
-        <Route path={ROUTES.PRODUCT} element={<Product />} />
-        <Route path="*" element={<NoMatch />} />
-      </Routes>
-    </div>
-  )
-}
+    <Routes>
+      <Route
+        path={ROUTES.HOME}
+        element={
+          <Suspense
+            fallback={
+              <div className="flex">
+                <img
+                  className="m-auto"
+                  src="https://c.tenor.com/28DFFVtvNqYAAAAC/loading.gif"
+                  alt="...Loading"
+                />
+              </div>
+            }
+          >
+            <HomeLazyPage />
+          </Suspense>
+        }
+      />
+      <Route path={ROUTES.CREATE} element={<Create />} />
+      <Route path={ROUTES.PRODUCT} element={<Product />} />
+      <Route path="*" element={<NoMatch />} />
+    </Routes>
+  </div>
+)
 
 export default App
