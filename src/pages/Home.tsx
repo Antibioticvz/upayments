@@ -1,13 +1,13 @@
-import { FC, Fragment, useState } from 'react'
+import { FC, Fragment, useState, useEffect } from 'react'
 
-import { FetchProducts, IProduct } from 'requests'
+import { FetchProductsRaw, IProduct } from 'requests'
 import { ProductGridItem } from 'components/ProductGridItem'
 import { AddButton } from 'components/AddButton'
 import { CategoriesDropdown } from 'components/CategoriesDropdown'
 import FetchCategories from 'requests/FetchCategories'
 
 export const Home: FC = () => {
-  const items = FetchProducts()
+  const [items, setItems] = useState<IProduct[]>([])
   const categories = FetchCategories()
 
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
@@ -23,6 +23,14 @@ export const Home: FC = () => {
     if (isSelected(value)) handleDeselect(value)
     else setSelectedCategories([...selectedCategories, value])
   }
+
+  useEffect(() => {
+    const loadItems = async () => {
+      const allItems = await FetchProductsRaw()
+      setItems(allItems)
+    }
+    loadItems()
+  }, [])
 
   return (
     <>

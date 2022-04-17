@@ -13,7 +13,7 @@ export interface IProduct {
   price: string
 }
 
-const FetchProducts = async (): Promise<IProduct[]> => {
+export const FetchProductsRaw = async (): Promise<IProduct[]> => {
   const res = await fetch(`${API}/products`, {
     method: 'GET',
     mode: 'cors',
@@ -26,4 +26,4 @@ const FetchProducts = async (): Promise<IProduct[]> => {
   return res.json()
 }
 
-export default suspend(FetchProducts())
+export default suspend(FetchProductsRaw())
