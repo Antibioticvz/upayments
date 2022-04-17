@@ -20,8 +20,7 @@ export const Product: FC = () => {
     [item?.price],
   )
 
-  const handleDelete = () =>
-    FetchDeleteById(id || '').then(() => setTimeout(() => navigate(-1), 600))
+  const handleDelete = () => FetchDeleteById(id || '').then(() => navigate(-1))
 
   useEffect(() => {
     const getItem = async () => {
