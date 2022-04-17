@@ -4,7 +4,12 @@ import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
 
-import { FetchCreateNew, INewProduct } from 'requests'
+import {
+  FetchCategories,
+  FetchCreateNew,
+  ICategories,
+  INewProduct,
+} from 'requests'
 
 const Gap = () => <div className="mb-7" />
 
@@ -19,6 +24,7 @@ const initialValues = {
 
 export const Create: FC = () => {
   const navigate = useNavigate()
+  const categories = FetchCategories()
 
   const validationSchema = () =>
     Yup.object().shape({
@@ -133,19 +139,18 @@ export const Create: FC = () => {
             />
             <Gap />
 
-            {/* ToDo categories */}
             <div className="relative border-b-2 focus-within:border-blue-500 rounded-xl bg-white border-2 border-gray-300 shadow-md pr-3">
               <Field
                 name="category"
                 component="select"
                 className="block w-full focus:outline-none bg-transparent text-black m-1 p-1"
               >
-                <option selected style={{ display: 'none' }}>
-                  Select category
-                </option>
-                <option value="Electronic">Electronic</option>
-                <option value="green">Green</option>
-                <option value="blue">Blue</option>
+                <option style={{ display: 'none' }}>Select category</option>
+                {categories?.map(({ name }: ICategories) => (
+                  <option key={name} value={name}>
+                    {name}
+                  </option>
+                ))}
               </Field>
             </div>
             <ErrorMessage
