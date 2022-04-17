@@ -1,5 +1,5 @@
 import { FC, Suspense, lazy } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 
 import { Create, Product, NoMatch } from 'pages'
 import { Header } from 'components/Header'
@@ -38,6 +38,7 @@ const App: FC = () => (
       />
       <Route path={ROUTES.CREATE} element={<Create />} />
       <Route path={ROUTES.PRODUCT} element={<Product />} />
+      <Route path="upayments" element={<Navigate to={ROUTES.HOME} replace />} />
       <Route path="*" element={<NoMatch />} />
     </Routes>
   </div>
