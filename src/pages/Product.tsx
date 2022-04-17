@@ -20,6 +20,9 @@ export const Product: FC = () => {
     [item?.price],
   )
 
+  const handleDelete = () =>
+    FetchDeleteById(id || '').then(() => setTimeout(() => navigate(-1), 600))
+
   useEffect(() => {
     const getItem = async () => {
       const req = await FetchProductById(id || '')
@@ -70,10 +73,8 @@ export const Product: FC = () => {
         <button
           type="button"
           className="inline-block p-3 bg-red-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out bottom-5 right-5"
-          onClick={() =>
-            // ToDo Check how it works
-            FetchDeleteById(id).then(() => setTimeout(() => navigate(-1), 600))
-          }
+          // ToDo Check how it works
+          onClick={() => handleDelete}
         >
           Delete this Product
         </button>
