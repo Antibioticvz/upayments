@@ -1,5 +1,9 @@
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  content: [
+    './public/index.html',
+    './src/pages/*.tsx',
+    './src/components/**/*.tsx',
+  ],
   theme: {
     extend: {
       transformOrigin: {

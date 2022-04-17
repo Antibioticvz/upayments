@@ -107,7 +107,9 @@ Prevent `sub` and `sup` elements from affecting the line height in all browsers.
 3. Remove default padding in all browsers.
 */
 
-button {
+button,
+select,
+textarea {
   font-family: inherit; /* 1 */
   font-size: 100%; /* 1 */
   line-height: inherit; /* 1 */
@@ -120,7 +122,8 @@ button {
 Remove the inheritance of text transform in Edge and Firefox.
 */
 
-button {
+button,
+select {
   text-transform: none;
 }
 
@@ -201,10 +204,20 @@ p {
 Prevent resizing textareas horizontally by default.
 */
 
+textarea {
+  resize: vertical;
+}
+
 /*
 1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
 2. Set the default placeholder color to the user's configured gray 400 color.
 */
+
+
+textarea::placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
 
 /*
 Set the default cursor for buttons.
@@ -292,4 +305,16 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 body {
     background-color: #c8c8c8;
+}
+
+textarea:focus-within ~ label, textarea:not(:placeholder-shown) ~ label {
+  --tw-translate-y: -2.25rem;
+  --tw-scale-x: .75;
+  --tw-scale-y: .75;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+textarea:focus-within ~ label {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
 }
