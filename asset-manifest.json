@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/upayments/static/css/main.1972b229.css",
-    "main.js": "/upayments/static/js/main.f303e53f.js",
-    "index.html": "/upayments/index.html",
-    "main.1972b229.css.map": "/upayments/static/css/main.1972b229.css.map",
-    "main.f303e53f.js.map": "/upayments/static/js/main.f303e53f.js.map"
+    "main.css": "/static/css/main.1972b229.css",
+    "main.js": "/static/js/main.94180d1c.js",
+    "index.html": "/index.html",
+    "main.1972b229.css.map": "/static/css/main.1972b229.css.map",
+    "main.94180d1c.js.map": "/static/js/main.94180d1c.js.map"
   },
   "entrypoints": [
     "static/css/main.1972b229.css",
-    "static/js/main.f303e53f.js"
+    "static/js/main.94180d1c.js"
   ]
 }
