@@ -3,3 +3,25 @@
 @tailwind components;
 
 @tailwind utilities;
+
+body {
+    background-color: #c8c8c8;
+}
+
+input:focus-within ~ label,
+input:not(:placeholder-shown) ~ label {
+  @apply transform scale-75 -translate-y-9;
+}
+
+input:focus-within ~ label {
+  @apply text-blue-500;
+}
+
+textarea:focus-within ~ label,
+textarea:not(:placeholder-shown) ~ label {
+  @apply transform scale-75 -translate-y-9;
+}
+
+textarea:focus-within ~ label {
+  @apply text-blue-500;
+}
