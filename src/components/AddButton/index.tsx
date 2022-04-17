@@ -13,7 +13,7 @@ export const AddButton: FC = () => {
       type="button"
       data-mdb-ripple="true"
       data-mdb-ripple-color="light"
-      className="inline-block p-3 bg-black text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out bottom-5 right-5"
+      className="inline-block p-3 bg-black text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out bottom-5 right-5"
       id="btn-back-to-top"
       onClick={() => navigate(ROUTES.CREATE)}
     >
