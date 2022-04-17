@@ -2,7 +2,7 @@
   "name": "upayments",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Antibioticvz.github.io/upayments",
+  "homepage": "https://antibioticvz.github.io/upayments",
   "dependencies": {
     "@headlessui/react": "^1.5.0",
     "@testing-library/jest-dom": "^5.14.1",
