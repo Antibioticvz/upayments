@@ -1,7 +1,7 @@
 import { FC, useEffect, useState, useCallback } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
-import { FetchProductById, IProduct } from 'requests'
+import { FetchDeleteById, FetchProductById, IProduct } from 'requests'
 
 type IParams = {
   id: string
@@ -9,6 +9,7 @@ type IParams = {
 
 export const Product: FC = () => {
   const { id } = useParams<IParams>()
+  const navigate = useNavigate()
   const [item, setItem] = useState<IProduct | null>()
 
   const getRoundedPrice = useCallback(
@@ -63,6 +64,20 @@ export const Product: FC = () => {
         Description
       </h2>
       <p className="text-gray-500">{item.description}</p>
+
+      <br />
+      {id && (
+        <button
+          type="button"
+          className="inline-block p-3 bg-red-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out bottom-5 right-5"
+          onClick={() =>
+            // ToDo Check how it works
+            FetchDeleteById(id).then(() => setTimeout(() => navigate(-1), 600))
+          }
+        >
+          Delete this Product
+        </button>
+      )}
     </div>
   )
 }
